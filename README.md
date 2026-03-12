@@ -20,8 +20,8 @@ $$
 #### Cycle-consistency loss:
 $$
 \begin{align}
-    \mathcal{L}_{\text{cyc}}(G, F) =  \mathbb{E}_{x\sim p_{\text{data}}(x)}[\left\lVert {F(G(x))-x} \right\rVert_1]
-    + \mathbb{E}_{y\sim p_{\text{data}}(y)}[ \left\lVert {G(F(y))-y} \right\rVert_1]
+    \mathcal{L}_{\text{cyc}}(G, F) =  \mathbb{E}_{x\sim p_{\text{data}}(x)}\left[\left\lVert {F(G(x))-x} \right\rVert_1\right]
+    + \mathbb{E}_{y\sim p_{\text{data}}(y)}\left[ \left\lVert {G(F(y))-y} \right\rVert_1\right]
 \end{align}
 $$
 

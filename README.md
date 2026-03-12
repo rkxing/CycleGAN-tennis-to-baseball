@@ -37,7 +37,7 @@ $$
 #### Ideal generators:
 $$
 \begin{equation}
-    G^*,F^* = \arg\min_{G,F}\max_{D_x,D_Y} \mathcal{L}(G, F, D_X, D_Y)
+    G^{*},F^{*} = \arg\min_{G,F}\max_{D_x,D_Y} \mathcal{L}(G, F, D_X, D_Y)
 \end{equation}
 $$
 

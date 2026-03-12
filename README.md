@@ -12,15 +12,15 @@ Original paper and implementation of CycleGAN found [here](https://arxiv.org/abs
 #### Adversarial loss:
 $$
 \begin{align}
-    \mathcal{L}_{\text{GAN}}(G,D_Y,X,Y) =& \ \mathbb{E}_{y \sim p_{\text{data}}(y)}[\log D_Y(y)]
-   + \ \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log (1-D_Y(G(x))]
+    \mathcal{L}_{\text{GAN}}(G,D_Y,X,Y) = \mathbb{E}_{y \sim p_{\text{data}}(y)}\left[\log D_Y(y)\right]
+    + \mathbb{E}_{x \sim p_{\text{data}}(x)}\left[ \log (1-D_Y(G(x)) \right]
 \end{align}
 $$
 
 #### Cycle-consistency loss:
 $$
 \begin{align}
-    \mathcal{L}_{\text{cyc}}(G, F) =  & \ \mathbb{E}_{x\sim p_{\text{data}}(x)}[\left\lVert {F(G(x))-x} \right\rVert_1]
+    \mathcal{L}_{\text{cyc}}(G, F) =  \mathbb{E}_{x\sim p_{\text{data}}(x)}[\left\lVert {F(G(x))-x} \right\rVert_1]
     + \mathbb{E}_{y\sim p_{\text{data}}(y)}[ \left\lVert {G(F(y))-y} \right\rVert_1]
 \end{align}
 $$
@@ -28,7 +28,7 @@ $$
 #### Full objective:
 $$
 \begin{align}
-     \mathcal{L}(G,F,D_X,D_Y) =& \   \mathcal{L}_{\text{GAN}}(G,D_Y,X,Y)
+     \mathcal{L}(G,F,D_X,D_Y) = \mathcal{L}_{\text{GAN}}(G,D_Y,X,Y)
     + \mathcal{L}_{\text{GAN}}(F,D_X,Y,X)
     + \lambda \mathcal{L}_{\text{cyc}}(G, F)
 \end{align}

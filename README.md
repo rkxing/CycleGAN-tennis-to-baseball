@@ -4,7 +4,7 @@ CycleGAN implementation to perform image-to-image translation of tennis balls to
 
 ## Data
 
-The data we used for training and testing can be accessed [here](https://drive.google.com/file/d/191UIK3TQdiKUhullpVjACl-TOr8a49vN/view?usp=drive_link).
+The data we used for training and testing can be accessed by unzipping `data.zip` or downloading it [here](https://drive.google.com/file/d/191UIK3TQdiKUhullpVjACl-TOr8a49vN/view?usp=drive_link).
 
 We use a subset of a sports ball dataset from Kaggle, keeping only the images relevant to this particular challenge (tennis balls and baseballs). Original dataset is [here](https://www.kaggle.com/datasets/samuelcortinhas/sports-balls-multiclass-image-classification).
 

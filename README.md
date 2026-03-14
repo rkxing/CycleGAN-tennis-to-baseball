@@ -1,6 +1,5 @@
 # CycleGAN-tennis-to-baseball
-CycleGAN implementation to perform image-to-image translation of tennis balls to baseballs
-
+Implementation of the CycleGAN architecture to perform image-to-image translation of tennis balls to baseballs and vice versa.
 
 ## Data
 
@@ -10,9 +9,13 @@ We use a subset of a sports ball dataset from Kaggle, keeping only the images re
 
 ## Method
 
-Original paper and implementation of CycleGAN found [here](https://arxiv.org/abs/1703.10593).
+We follow a typical CycleGAN architecture, following the original paper, visualized below:
 
 ![alt text](assets/architecture.png)
+
+Original paper and implementation of CycleGAN can be found [here](https://arxiv.org/abs/1703.10593).
+
+Our loss objectives are the following:
 
 #### Adversarial loss:
 $$
@@ -39,6 +42,14 @@ $$
 \end{align}
 $$
 
+With the addition of an **identity loss** to further enforce cycle consistency, defined as follows:
+
+$$
+\begin{align}
+    \mathcal{L}_I(G) = \mathbb{E}_{x\sim p_{\text{data}}(x)} \left[ \left\lVert G(x) - x \right\rVert_1 \right]
+\end{align}
+$$
+
 #### Ideal generators:
 $$
 \begin{equation}
@@ -46,3 +57,23 @@ $$
 \end{equation}
 $$
 
+## Model architecture + training
+
+We implement an encoder-decoder structure for the generators, using standard convolution as well as residual blocks for better gradient flow.
+
+The discriminator models follow a [PatchGAN](https://openaccess.thecvf.com/content_CVPR_2020/papers/Zou_Deep_Adversarial_Decomposition_A_Unified_Framework_for_Separating_Superimposed_Images_CVPR_2020_paper.pdf) style, outputting a feature map of authenticity scores rather than a singular value.
+
+We also implement a learning rate scheduler to dynamically adjust the learning rate throughout training. For this challenge, we linearly decay the initial learning rate $\eta$, starting from the midpoint of training (`num_epochs // 2`). This helps to achieve strong momentum in early epochs while gradually minimizing the steps as we approach convergence.
+
+Currently, our best results have been achieved on the following hyperparameters:
+```
+cyc_lambda = 15
+identity_lambda = 5
+lr = 0.0002
+num_epochs = 150
+beta1, beta2 = 0.5, 0.999
+```
+
+## Example result
+
+![alt text](assets/sample.png)
